@@ -7,17 +7,14 @@ class MyString
 	int length;
 public:
     MyString();
-
     MyString(int n);
-
     MyString(const char* input);
-
-    ~MyString() {
-        delete[] str;
-    }
-
+    ~MyString();
     void input();
-
     void print() const;
+    void Mystrcpy(MyString& obj);
+    bool Mystrstr(const char* str);
+    int MyChar(char c);
+
 };
 
