@@ -34,6 +34,15 @@ MyString::~MyString()
     delete[] str;
 }
 
+MyString::MyString(MyString&& other)
+{
+    str = other.str;      
+    length = other.length;
+
+    other.str = nullptr;   
+    other.length = 0;
+}
+
 void MyString::setStr(const char* s)
 {
     if (!s) {
@@ -166,6 +175,20 @@ int MyString::MyStrCmp(MyString& b)
         return 1;
 
     return 0; 
+}
+
+MyString& MyString::operator=(MyString&& other)
+{
+    if (this != &other)
+    {
+        delete[] str;       
+        str = other.str;    
+        length = other.length;
+
+        other.str = nullptr; 
+        other.length = 0;
+    }
+    return *this;
 }
 
 char& MyString::operator()()

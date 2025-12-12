@@ -11,6 +11,7 @@ public:
     MyString(const char* input);
     MyString(const MyString& other);
     ~MyString();
+    MyString(MyString&& other);
     void setStr(const char* s);
     int Getlength() const;
     const char* Getstr() const;
@@ -23,6 +24,7 @@ public:
     void MyStrCat(MyString& b);
     void MySteDel(char c);
     int MyStrCmp(MyString& b);
+    MyString& operator=(MyString&& other);
     char& operator()();
     MyString& operator++();      
     MyString operator++(int);    
