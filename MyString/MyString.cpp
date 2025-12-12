@@ -168,6 +168,57 @@ int MyString::MyStrCmp(MyString& b)
     return 0; 
 }
 
+char& MyString::operator()()
+{
+    char c;
+    cin >> c;
+
+    delete[] str;
+    str = new char[2];
+    str[0] = c;
+    str[1] = '\0';
+    length = 1;
+
+    return str[0];
+}
+
+
+MyString& MyString::operator++()
+{
+    char add = '*';  
+
+    char* newStr = new char[length + 2];
+    newStr[0] = add;
+
+    for (int i = 0; i < length; i++)
+        newStr[i + 1] = str[i];
+
+    newStr[length + 1] = '\0';
+
+    delete[] str;
+    str = newStr;
+    length++;
+    return *this;
+}
+
+MyString MyString::operator++(int)
+{
+    MyString temp(*this); 
+    char add = '+';       
+    char* newStr = new char[length + 2];
+    for (int i = 0; i < length; i++)
+        newStr[i] = str[i];
+
+    newStr[length] = add;
+    newStr[length + 1] = '\0';
+
+    delete[] str;
+    str = newStr;
+    length++;
+
+    return temp;
+}
+
 char& MyString::operator[](int index)
 {
     return str[index];

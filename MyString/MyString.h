@@ -23,6 +23,9 @@ public:
     void MyStrCat(MyString& b);
     void MySteDel(char c);
     int MyStrCmp(MyString& b);
+    char& operator()();
+    MyString& operator++();      
+    MyString operator++(int);    
     char& operator[](int index);
     const char& operator[](int index) const;
     MyString& operator=(MyString& b);
